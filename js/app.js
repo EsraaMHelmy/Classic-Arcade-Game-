@@ -14,7 +14,6 @@ var Enemy = function(x ,y) {
 
 Enemy.prototype.get_speed = function(){
     return Math.floor(Math.random() * (500 - 200+1)+ 200); //floor to remove points l ksor, we can declare Maximum_speed as a const = 500 and minmum_speed 200 
-
 };
 
 // Update the enemy's position, required method for game
@@ -45,7 +44,8 @@ var Player = function(x, y) {
     this.y = y;
 };
 
-//reset function
+//reset function .. the position of the player back to the initial.
+
 Player.prototype.reset = function () {
     this.x = 200;
     this.y = 400;
@@ -76,9 +76,11 @@ Enemy.prototype.render = function() {
 
 
 Player.prototype.handleInput = function(key) {
-    if(key == 'left') {
-       this.x -= 100;
-    } else if(key == 'right') {
+   if (key == 'left') {
+        if (this.x > 0) {
+            this.x -= 100;
+        } 
+       }else if(key == 'right') {
        if(this.x < 400) {
         this.x += 100;
        }
